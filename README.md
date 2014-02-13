@@ -1,9 +1,6 @@
-# Thrift Bench
-
-----
+## Thrift Bench
 
 A collection of simple performance metrics for Apache Thrift.
-
 
 Benchmarks:
 
