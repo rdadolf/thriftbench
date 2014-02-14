@@ -1,4 +1,5 @@
 ENV
 gen-py
+gen-cpp
 benchmarks/null/py/protocol
 *.pyc

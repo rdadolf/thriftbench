@@ -19,11 +19,11 @@ have changed them.
 
 Example:
 
-            $ cd benchmarks/null
-            $ make test
-            thrift --out py --gen py null.thrift
-            ./run_py.sh
-            Listening on 38003
-            3
-            $
+        $ cd benchmarks/null
+        $ make test
+        thrift --out py --gen py null.thrift
+        ./run_py.sh
+        Listening on 38003
+        3
+        $
 
