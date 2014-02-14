@@ -20,10 +20,11 @@ have changed them.
 Example:
 
     $ cd benchmarks/null
-    $ make test
+    $ make test-py
     thrift --out py --gen py null.thrift
+    thrift --o cpp --gen cpp null.thrift
     ./run_py.sh
     Listening on 38003
     3
-    $
+
 
