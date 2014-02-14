@@ -1,15 +1,9 @@
-from thrift.transport import TSocket
-from thrift.transport import TTransport
-from thrift.server import TServer
-
-
 from thrift.protocol import TBinaryProtocol
 from thrift.protocol import TCompactProtocol
 from thrift.protocol import TJSONProtocol
-
+from thrift.transport import TSocket
 from thrift.transport import TTransport
-from thrift.transport import TZlibTransportFactory
-
+from thrift.transport import TZlibTransport
 from thrift.server import TNonblockingServer
 from thrift.server import TProcessPoolServer
 from thrift.server import TServer
@@ -19,9 +13,10 @@ from thrift.server import TServer
 PROTOCOLS = {
     'fast': TBinaryProtocol.TBinaryProtocolAcceleratedFactory,
     'binary': TBinaryProtocol.TBinaryProtocolFactory,
-    'compact': TCompactProtocolFactory.TCompactProtocolFactory,
+    'compact': TCompactProtocol.TCompactProtocolFactory,
     'json': TJSONProtocol.TJSONProtocolFactory,
 }
+
 
 # These specify how data gets written and read from the socket
 TRANSPORTS = {
@@ -30,6 +25,7 @@ TRANSPORTS = {
     'compressed': TZlibTransport.TZlibTransportFactory,
     # TODO: twisted, tornado
 }
+
 
 # These specify how new connections are handled on the server
 SERVERS = {
@@ -40,10 +36,31 @@ SERVERS = {
 }
 
 
-def initialize_server(processor, port, trans_type, prot_type, server_type):
+def initialize_server(processor, port, trans_type, prot_type, server_type, **kwargs):
     transport = TSocket.TServerSocket(port=port)
     tfactory = TRANSPORTS[trans_type]()
     pfactory = PROTOCOLS[prot_type]()
     server_c = SERVERS[server_type]
-    return server_c(processor, transport, tfactory, tfactory, pfactory, pfactory)
+    if server_type is 'threaded':
+        kwargs['daemon'] = True
+    return server_c(processor, transport, tfactory, tfactory, pfactory, pfactory, **kwargs)
+
+
+def get_transport(host, port):
+    transport = TSocket.TSocket(host, port)
+    transport.open()
+    return transport
+
+
+def get_protocol(transport, prot_type):
+    pfactory = PROTOCOLS[prot_type]()
+    return pfactory.getProtocol(transport)
+
+
+def init_and_run_forever(*args, **kwargs):
+    server = initialize_server(*args, **kwargs)
+    try:
+        server.serve()
+    except KeyboardInterrupt:
+        pass
 

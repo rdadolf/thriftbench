@@ -1,3 +1,4 @@
 ENV
 gen-py
 benchmarks/null/py/protocol
+*.pyc
