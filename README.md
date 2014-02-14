@@ -9,3 +9,22 @@ Benchmarks:
   - Goodput vs. multiple clients/servers
   - Goodput vs. RPC window
   - Paxos throughput
+
+
+## Running Python Tests
+
+Go to the benchmark you want to in the `benchmarks` directory. The python files will be in the `py` directory.
+You can run `make test-py` to see the test run. You can run `make` to recompile the thrift definitions, if you 
+have changed them. 
+
+Example:
+
+    $ cd benchmarks/null
+    $ make test-py
+    thrift --out py --gen py null.thrift
+    thrift --o cpp --gen cpp null.thrift
+    ./run_py.sh
+    Listening on 38003
+    3
+
+
