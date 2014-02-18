@@ -43,11 +43,15 @@ def initialize_server(processor, port, trans_type, prot_type, server_type, **kwa
     server_c = SERVERS[server_type]
     if server_type is 'threaded':
         kwargs['daemon'] = True
+    if server_type is 'nonblocking':
+        return server_c(processor, transport, pfactory, pfactory, **kwargs)
     return server_c(processor, transport, tfactory, tfactory, pfactory, pfactory, **kwargs)
 
 
-def get_transport(host, port):
+def get_transport(host, port, framed = False):
     transport = TSocket.TSocket(host, port)
+    if framed:
+        transport = TTransport.TFramedTransport(transport)
     transport.open()
     return transport
 

@@ -22,6 +22,11 @@ class NullHandler : virtual public NullIf {
     return p;
   }
 
+  void a(const std::string& a) {
+    // Your implementation goes here
+    // printf("a\n");
+  }
+
   void oneway_test(const int32_t i) {
     //printf("oneway_test\n");
   }
