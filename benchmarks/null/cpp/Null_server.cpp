@@ -18,14 +18,12 @@ class NullHandler : virtual public NullIf {
     // Your initialization goes here
   }
 
-  int32_t identity(const int32_t i) {
-    // Your implementation goes here
-    printf("identity\n");
+  int32_t identity(const int32_t p) {
+    return p;
   }
 
   void oneway_test(const int32_t i) {
-    // Your implementation goes here
-    printf("oneway_test\n");
+    //printf("oneway_test\n");
   }
 
 };
@@ -35,7 +33,7 @@ int main(int argc, char **argv) {
   shared_ptr<NullHandler> handler(new NullHandler());
   shared_ptr<TProcessor> processor(new NullProcessor(handler));
   shared_ptr<TServerTransport> serverTransport(new TServerSocket(port));
-  shared_ptr<TTransportFactory> transportFactory(new TBufferedTransportFactory());
+  shared_ptr<TTransportFactory> transportFactory(new TFramedTransportFactory());
   shared_ptr<TProtocolFactory> protocolFactory(new TBinaryProtocolFactory());
 
   TSimpleServer server(processor, serverTransport, transportFactory, protocolFactory);

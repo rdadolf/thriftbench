@@ -12,6 +12,7 @@ transport = common.get_transport('localhost', 38003)
 protocol = common.get_protocol(transport, prot_type)
 client = Null.Client(protocol)
 
-print client.identity(3)
+for i in xrange(0, 100000):
+    client.identity(i)
 
 transport.close()
