@@ -9,4 +9,4 @@ benchmarks/null/cpp/Null.*
 benchmarks/null/cpp/*_constants.*
 benchmarks/null/cpp/*_types.*
 benchmarks/null/cpp/Null_server.skeleton.cpp
-
+benchmarks/null/.protocol.generated
