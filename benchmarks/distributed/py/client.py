@@ -6,9 +6,9 @@ from protocol import Distributed
 
 WINDOW_SIZE = 5
 
-IP = sys.argv[1] if (sys.argv) > 1 else 'localhost'
-PORT = int(sys.argv[2]) if (sys.argv) > 2 else 38003
-NUM_REQUESTS = int(sys.argv[3]) if (sys.argv) > 3 else 10000
+IP = sys.argv[1] if len(sys.argv) > 1 else 'localhost'
+PORT = int(sys.argv[2]) if len(sys.argv) > 2 else 38003
+NUM_REQUESTS = int(sys.argv[3]) if len(sys.argv) > 3 else 10000
 
 transport = common.get_transport(IP, PORT, framed = True)
 protocol = common.get_protocol(transport, 'binary')
