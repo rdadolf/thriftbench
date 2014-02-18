@@ -1,12 +1,12 @@
-all: protocol cpp
+all: protocol
 
 protocol: .protocol.generated
 
 .protocol.generated: distributed.thrift
-    thrift --out py --gen py null.thrift
-    touch .protocol.generated
+	thrift --out py --gen py distributed.thrift
+	touch .protocol.generated
 
 clean:
-    rm -rf py/protocol
-    rm -rf .protocol.generated
+	rm -rf py/protocol
+	rm -rf .protocol.generated
 
