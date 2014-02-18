@@ -6,3 +6,9 @@ Usage
 Server: python server.py [port]
 Client: python client.py [server-ip] [server-port] [num-requests]
 
+
+To think about (tweaks)
+-----------------------
+
+- in client.py, there is a WINDOW_SIZE parameter. Adjust to change how many messages you want to send asyncrhonously.
+- in server.py, if you are dealing with more than 1000 clients, may want to change to 'nonblocking' instead of 'threaded' server type
