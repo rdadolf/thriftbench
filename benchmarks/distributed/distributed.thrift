@@ -1,6 +1,6 @@
 namespace py protocol
 
-service Null {
+service Distributed {
 
     string msg(1: string a);
 
