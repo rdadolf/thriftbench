@@ -1,0 +1,8 @@
+
+
+Usage
+-----
+
+Server: python server.py [port]
+Client: python client.py [server-ip] [server-port] [num-requests]
+

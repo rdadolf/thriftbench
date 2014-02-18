@@ -1,6 +1,7 @@
 ENV
 gen-py
 benchmarks/null/py/protocol
+benchmarks/distributed/py/protocol
 *.pyc
 *.o
 benchmarks/null/cpp/server
@@ -9,4 +10,4 @@ benchmarks/null/cpp/Null.*
 benchmarks/null/cpp/*_constants.*
 benchmarks/null/cpp/*_types.*
 benchmarks/null/cpp/Null_server.skeleton.cpp
-benchmarks/null/.protocol.generated
+benchmarks/*/.protocol.generated
