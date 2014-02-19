@@ -14,7 +14,8 @@ import struct
 SENTINEL = -1
 
 class Paxos_Machine:
-  def __init__(self, persisted_state=None, agent_list=[], name=None):
+  def __init__(self, persisted_state=None, agent_list=[], name=None, rounds=1):
+    self.rounds = rounds
     if name is None:
       self.name = 'Paxos_Machine_'+str(random.randint(0,1000000))
     else:
@@ -51,10 +52,12 @@ class Paxos_Machine:
     (name,port) = name_and_port
     # Setup RPC connection
     self.transport = common.get_transport(name,port,framed=True)
-    self.protocol = common.get_protocol(self.transport, 'json')
+    self.protocol = common.get_protocol(self.transport, 'binary')
     return paxos.Paxos.Client(self.protocol)
 
-  def iterate(self,n=1):
+  def iterate(self,n=None):
+    if n is None:
+      n = self.rounds
     self.state_init()
     for i in xrange(0,n):
       self.propose(100+i)

@@ -15,4 +15,4 @@ if __name__=='__main__':
   port = sys.argv[1]
 
   processor = Paxos.Processor( Paxos_Machine(name='PaxMach:'+str(fqdn)+':'+str(port)) )
-  common.init_and_run_forever(processor, port, 'framed', 'json', 'threaded')
+  common.init_and_run_forever(processor, port, 'framed', 'binary', 'threaded')
