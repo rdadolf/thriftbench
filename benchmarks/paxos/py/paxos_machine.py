@@ -32,7 +32,7 @@ class Paxos_Machine:
     else:
       self.state_init()
 
-    print name+' is alive'
+    #print name+' is alive'
 
   def state_init(self): # self.state
     self.target_value = SENTINEL
@@ -59,7 +59,7 @@ class Paxos_Machine:
     for i in xrange(0,n):
       self.propose(100+i)
       self.state_init()
-    print 'Done'
+    #print 'Done'
 
   # STATE MACHINE METHODS
   def propose(self,target_value = SENTINEL):
