@@ -17,10 +17,12 @@ protocol: $(BENCHMARK).thrift
 python: py/server.py py/client.py protocol
 	# Do nothing
 
-cpp: cpp/client cpp/server
 
-cpp/client: cpp/client.cpp protocol
-	$(CXX) $(CXXFLAGS) cpp/client.cpp -o cpp/client $(LDFLAGS)
-
-cpp/server: cpp/server.cpp protocol
-	$(CXX) $(CXXFLAGS) cpp/server.cpp -o cpp/server $(LDFLAGS)
+# TODO
+#cpp: cpp/client cpp/server
+#
+#cpp/client: cpp/client.cpp protocol
+#	$(CXX) $(CXXFLAGS) cpp/client.cpp -o cpp/client $(LDFLAGS)
+#
+#cpp/server: cpp/server.cpp protocol
+#	$(CXX) $(CXXFLAGS) cpp/server.cpp -o cpp/server $(LDFLAGS)

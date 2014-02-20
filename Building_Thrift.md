@@ -1,6 +1,6 @@
 ## Notes on Building Thrift
 
-Thrift assumes that you have root access when building from source.
+Most of the Thrift documentation assumes that you have root access and can install packages directly with, say, `yum`. Instead, if you want to install locally, source is the best bet. Here's how.
 
 ### Install Boost
 
@@ -9,7 +9,7 @@ Thrift assumes that you have root access when building from source.
 
 ### Install Thrift
 
-Edit your .pydistutils.cfg file to set a local installation path for python libraries. For instance:
+Thrift's `PY_PREFIX` environment variable is ignored in favor of using the python installation conventions. To install thrift libraries in a custom location, edit your `.pydistutils.cfg` file to set a local installation path for python libraries. For instance:
 
         [install]
         install-path = PYTHON_PREFIX
