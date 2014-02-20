@@ -14,8 +14,8 @@ Benchmarks:
 ## Running Microbenchmarks
 
 Go to the benchmark you want to in the `benchmarks` directory. The python files will be in the `py` directory, the C++ ones in the `cpp` directory.
-You can run `make` to recompile the thrift definitions, if you have changed them. 
-You can run `make test-py` or make test-cpp to see the test run. 
+You can run `make` to recompile the thrift definitions if you have changed them. 
+You can run `make test-py` or `make test-cpp` to see the test run. 
 
 Example:
 
